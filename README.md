@@ -37,7 +37,7 @@ pip install relex
 
 Before contributing, please read carefully the Context and motivation section, more precisely the paragraph: Bringing together applied research and good coding practice for more details about relex (the project) philosophy and its (the package) design. Therein we attempted to motivate the adopted structure of the package, the role of each sub-package, and we tried to share our vision of how the project can evolve in the future and become more useful.
 
-* Contributing to improve code quality
+**Contributing to improve code quality:**
 
 - Report Bugs in existing features
 - Fix reported Bugs
@@ -47,7 +47,7 @@ Before contributing, please read carefully the Context and motivation section, m
 - Write tests
 - Write documentation
 
-* Contributing as applied (NLP) researcher
+**Contributing as applied (NLP) researcher:**
 
 - All the previous
 - Suggest new pipelines
