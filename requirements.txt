@@ -1,1 +1,4 @@
-relex
+flair 
+torchmetrics
+pandas
+numpy
