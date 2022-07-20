@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supported Python versions &mdash; relex 0.1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="relex.data" href="relex.data.html" />
+    <link rel="prev" title="What is semantic relation extraction?" href="philosophy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> relex
+            <img src="_static/relex.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html">Project context, and motivation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="main_sections.html#package-technical-details">Package technical details</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sub-packages">Sub-packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="relex.data.html">relex.data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.models.html">relex.models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.learners.html">relex.learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.predictors.html">relex.predictors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.utilities.html">relex.utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#supported-use-cases">Supported use-cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#how-to-contribute">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#resources">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#credits">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#license">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">relex</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="main_sections.html">Project context, and motivation</a> &raquo;</li>
+      <li>Supported Python versions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/relex.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="supported-python-versions">
+<h1>Supported Python versions<a class="headerlink" href="#supported-python-versions" title="Permalink to this headline"></a></h1>
+<p>Python <code class="docutils literal notranslate"><span class="pre">3.7.13</span></code> or a more recent version is required to setup and use relex.</p>
+</section>
+<section id="requirements">
+<h1>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline"></a></h1>
+<p>Handling of deep neural networks and of their learning processes in relex is done basically using pytorch as backend environment, along with the following amazing packages:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/flairNLP/flair">flair</a>, a Pytorch-based library for high-level (NLP).</p></li>
+<li><p><a class="reference external" href="https://torchmetrics.readthedocs.io/">torchmetrics</a>, a Python library for creating evaluation metrics.</p></li>
+<li><p><a class="reference external" href="https://www.numpy.org/">numpy</a>, a Python library for scientific computing.</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a>, a Python library for data manipulation and analysis.</p></li>
+</ul>
+</section>
+<section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<p>Relex package can be easily installed with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install relex
+</pre></div>
+</div>
+</section>
+<section id="sub-packages">
+<h1>Sub-packages<a class="headerlink" href="#sub-packages" title="Permalink to this headline"></a></h1>
+<p>To achieve its goal of being a simple and easy-to-use framework for building relation extraction systems, relex (the package) has been thought to include the following tree of sub-packages:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="relex.data.html">relex.data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relex.models.html">relex.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relex.learners.html">relex.learners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relex.predictors.html">relex.predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="relex.utilities.html">relex.utilities</a></li>
+</ul>
+</div>
+<p>More details about the motivations behind the choice of this package structure and the purpose of each sub-package can be found in this <a class="reference external" href="./philosophy.html#bringing-together-applied-research-and-good-coding-practice">paragraph</a>.
+Please refer to <a class="reference external" href="./contributions.html">contributions</a>  guidelines for more information on how to contribute to relex.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="philosophy.html" class="btn btn-neutral float-left" title="What is semantic relation extraction?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="relex.data.html" class="btn btn-neutral float-right" title="relex.data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ali NCIBI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

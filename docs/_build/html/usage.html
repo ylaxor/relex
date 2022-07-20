@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A first dummy approach &mdash; relex 0.1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing to improve code quality" href="contributions.html" />
+    <link rel="prev" title="relex.utilities" href="relex.utilities.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> relex
+            <img src="_static/relex.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html">Project context, and motivation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#package-technical-details">Package technical details</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="main_sections.html#supported-use-cases">Supported use-cases</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">A first dummy approach</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#how-to-contribute">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#resources">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#credits">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#license">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">relex</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="main_sections.html">Project context, and motivation</a> &raquo;</li>
+      <li>A first dummy approach</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>As you might have understood, relex aims to emphasize modern deep-learning based approaches to tackle the problem of semantic relations extraction.
+The package is therefore intended to provide necessary interfaces and routines for building custom pipelines of semantic relation extractions.
+In the <a class="reference external" href="./philosophy.html#bringing-together-applied-research-and-good-coding-practice">Bringing together applied research and good coding practice</a> section of this documentation, we motivated how relex could evolve and be a more useful tool for people who want to build relation extraction systems: Even under the unified modular workflow, many effective approaches are still possible.
+Relex is made to make those accessible and directly applicable for its users personal needs (see <a class="reference external" href="./contributions.html#contributing-as-applied-nlp-researcher">Contributing as applied (NLP) researcher</a>).
+Below we will progressively give final usage examples of each effective pipeline incorporated in relex.</p>
+<section id="a-first-dummy-approach">
+<h1>A first dummy approach<a class="headerlink" href="#a-first-dummy-approach" title="Permalink to this headline"></a></h1>
+<p>In this approach:</p>
+<ul class="simple">
+<li><p>Modular three-stage pipeline is respected.</p></li>
+<li><p>Learnable components are learned separately.</p></li>
+<li><p>First stage: Tagging the input text with &lt;B-Entity&gt;, &lt;I-Entity&gt;, &lt;Out&gt; tags, where: &lt;B-Entity&gt; is the beginning of an entity implied in some relationship, &lt;I-Entity&gt; is used to tag the inside part.s of an entity, and &lt;Out&gt; to tag anything else (i.e any other text token).</p></li>
+<li><p>Second stage: Extracting the entities from the tagged text, and forming the list of all possible pairs (greedy pair formin).</p></li>
+<li><p>Third stage: Extracting the relations from the list of pairs, using a neural network classifier.</p></li>
+<li><p>Each learnable sub-modules leverages some specific transferred embedding models that help build rich text representations.</p></li>
+<li><p>Final components are gathered in a single (deterministic) routine: The predictor, whose role is to put everything together and predict the pairs, and the relations’ types and/or directions between them, from the input text.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">relex.utilities</span> <span class="kn">import</span> <span class="n">SeedEverything</span>
+<span class="c1"># Seed eveything for reproducibility</span>
+<span class="n">SeedEverything</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">relex.utilities</span> <span class="kn">import</span> <span class="n">LoadFewRelData</span><span class="p">,</span> <span class="n">LoadCustomCorpus</span>
+<span class="c1"># Import the FewRel dataset as example.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">LoadFewRelData</span><span class="p">(</span><span class="n">usage</span><span class="o">=</span><span class="s2">&quot;demo-with-three-relations&quot;</span><span class="p">)</span>
+<span class="c1"># Or load your custom pre-annotated data samples.</span>
+<span class="n">custom_train_data</span> <span class="o">=</span> <span class="n">LoadCustomCorpus</span><span class="p">(</span><span class="n">jsonl_file_path</span><span class="o">=</span><span class="s2">&quot;./demo-custom-corpus.jsonl&quot;</span><span class="p">)</span>
+<span class="n">custom_dev_data</span> <span class="o">=</span> <span class="n">LoadCustomCorpus</span><span class="p">(</span><span class="n">jsonl_file_path</span><span class="o">=</span><span class="s2">&quot;./demo-custom-corpus.jsonl&quot;</span><span class="p">)</span>
+<span class="n">custom_test_data</span> <span class="o">=</span> <span class="n">LoadCustomCorpus</span><span class="p">(</span><span class="n">jsonl_file_path</span><span class="o">=</span><span class="s2">&quot;./demo-custom-corpus.jsonl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An example of valid custom corpus file can be found in the <a class="reference external" href="https://github.com/ylaxor/relex/blob/main/demo-custom-corpus.jsonl">following link</a>.
+Such files can be created using awesome GUI annotation tools like: <a class="reference external" href="https://github.com/doccano/doccano">doccano</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">relex.data</span> <span class="kn">import</span> <span class="n">RelexCorpus</span>
+<span class="c1"># Wrap your data into a RelexCorpus object for later learning purposes.</span>
+<span class="n">corpus</span> <span class="o">=</span> <span class="n">RelexCorpus</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">],</span> <span class="n">dev</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;dev&quot;</span><span class="p">],</span> <span class="n">test</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">])</span>
+<span class="c1">#corpus = RelexCorpus(train=custom_train_data, dev=custom_dev_data, test=custom_test_data)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">relex.utilities</span> <span class="kn">import</span> <span class="n">EmbeddingsLoader</span>
+<span class="c1"># Pick some embeddings to use for each sub-module.</span>
+<span class="c1"># Choice of embeddings for the EntitiesTagger sub-module.</span>
+<span class="n">tagger_embeddings</span> <span class="o">=</span> <span class="n">EmbeddingsLoader</span><span class="p">(</span><span class="n">requested_embeddings</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;glove&quot;</span><span class="p">:{</span><span class="s2">&quot;family&quot;</span><span class="p">:</span><span class="s2">&quot;Word&quot;</span><span class="p">}})</span>
+<span class="c1"># Choice of embeddings for the PairClassifier sub-module.</span>
+<span class="n">pair_clf_embeddings</span> <span class="o">=</span> <span class="n">EmbeddingsLoader</span><span class="p">(</span><span class="n">requested_embeddings</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;bert-base-uncased&quot;</span><span class="p">:{</span><span class="s2">&quot;family&quot;</span><span class="p">:</span><span class="s2">&quot;Transformer&quot;</span><span class="p">}})</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">relex.models</span> <span class="kn">import</span> <span class="n">EntitiesTagger</span><span class="p">,</span> <span class="n">PairClassifier</span>
+<span class="c1"># Instantiate and configure the sub-modules before proceeding to training.</span>
+<span class="c1"># Entities tagging sub-module: configure the model.</span>
+<span class="n">tagger_model</span> <span class="o">=</span> <span class="n">EntitiesTagger</span><span class="p">(</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="n">tagger_embeddings</span><span class="p">,</span>
+    <span class="n">tag_dictionary</span><span class="o">=</span><span class="n">corpus</span><span class="o">.</span><span class="n">tag_dict</span><span class="p">,</span>
+    <span class="n">tag_type</span><span class="o">=</span><span class="n">corpus</span><span class="o">.</span><span class="n">tag_type</span><span class="p">,</span>
+    <span class="n">hidden_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">reproject_embeddings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">loss_weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">allow_unk_predictions</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+<span class="c1"># Pair classification sub-module: configure the model.</span>
+<span class="n">pair_clf_model</span> <span class="o">=</span> <span class="n">PairClassifier</span><span class="p">(</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="n">pair_clf_embeddings</span><span class="p">,</span>
+    <span class="n">use_specific_embeddings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">reproject_embeddings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">projection_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">hidden_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">nb_classes</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">corpus</span><span class="o">.</span><span class="n">class2idx</span><span class="p">),</span>
+    <span class="n">nb_directions</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">corpus</span><span class="o">.</span><span class="n">direction2idx</span><span class="p">),</span>
+    <span class="n">pair_pooling_operation</span><span class="o">=</span><span class="s2">&quot;stack&quot;</span><span class="p">,</span>
+    <span class="n">init_class_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">init_direction_alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">relex.learners</span> <span class="kn">import</span> <span class="n">EntitiesTaggerLearner</span><span class="p">,</span> <span class="n">PairClassifierLearner</span>
+<span class="c1"># Setup learning loops parameters for each sub-module, and launch them separately.</span>
+<span class="c1"># Setup the learning loop for the entities tagging sub-module.</span>
+<span class="n">tagger_learner</span> <span class="o">=</span> <span class="n">EntitiesTaggerLearner</span><span class="p">(</span>
+    <span class="n">entities_tagger</span><span class="o">=</span><span class="n">tagger_model</span><span class="p">,</span>
+    <span class="n">corpus</span><span class="o">=</span><span class="n">corpus</span><span class="p">,</span>
+    <span class="n">base_path</span><span class="o">=</span><span class="s2">&quot;./resources/entities-tagging&quot;</span><span class="p">,</span>
+    <span class="n">max_epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">,</span>
+    <span class="n">mini_batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">patience</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">anneal_factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">main_evaluation_metric</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;macro avg&quot;</span><span class="p">,</span> <span class="s2">&quot;f1-score&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="c1"># Setup the learning loop for the pair classification sub-module.</span>
+<span class="n">pair_clf_learner</span> <span class="o">=</span> <span class="n">PairClassifierLearner</span><span class="p">(</span>
+    <span class="n">pair_classifier</span><span class="o">=</span><span class="n">pair_clf_model</span><span class="p">,</span>
+    <span class="n">target_task_name</span><span class="o">=</span><span class="s2">&quot;relation-type-only&quot;</span><span class="p">,</span>
+    <span class="n">loss_aggregation_mode</span><span class="o">=</span><span class="s2">&quot;off&quot;</span><span class="p">,</span>
+    <span class="n">tune_aggregation_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">corpus</span><span class="o">=</span><span class="n">corpus</span><span class="p">,</span>
+    <span class="n">base_path</span><span class="o">=</span><span class="s2">&quot;./resources/pair-classification&quot;</span><span class="p">,</span>
+    <span class="n">max_epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">,</span>
+    <span class="n">mini_batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">patience</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">anneal_factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">eval_metric_type</span><span class="o">=</span><span class="s2">&quot;macro&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="c1"># Launch the learning loops in separate fashion.</span>
+<span class="n">tagger_learner</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pair_clf_learner</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">relex.predictors</span> <span class="kn">import</span> <span class="n">GreedyPredictor</span>
+<span class="c1">#reload best learned sub-modules, namely the entities tagger and pairs classifier.</span>
+<span class="n">best_tagger</span> <span class="o">=</span> <span class="n">EntitiesTagger</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="s2">&quot;./resources/entities-tagging&quot;</span><span class="p">)</span>
+<span class="n">best_pair_clf</span> <span class="o">=</span> <span class="n">PairClassifier</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="s2">&quot;./resources/pair-classification/relation-type-only&quot;</span><span class="p">)</span>
+<span class="c1">#plug them into a greedy (with brutal pair forming strategy) predictor.</span>
+<span class="n">extractor</span> <span class="o">=</span> <span class="n">GreedyPredictor</span><span class="p">(</span>
+    <span class="n">tagger</span><span class="o">=</span><span class="n">best_tagger</span><span class="p">,</span>
+    <span class="n">classifier</span><span class="o">=</span><span class="n">best_pair_clf</span><span class="p">,</span>
+    <span class="n">class2idx</span><span class="o">=</span><span class="n">corpus</span><span class="o">.</span><span class="n">class2idx</span><span class="p">,</span>
+    <span class="n">direction2idx</span><span class="o">=</span><span class="n">corpus</span><span class="o">.</span><span class="n">direction2idx</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="c1">#re-extract relation information on some sample from the test test</span>
+<span class="n">test_sample</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">corpus</span><span class="o">.</span><span class="n">test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_sample</span><span class="p">)</span>
+<span class="n">test_raw_text</span> <span class="o">=</span> <span class="n">test_sample</span><span class="p">[</span><span class="s2">&quot;sentence&quot;</span><span class="p">]</span>
+<span class="n">extractor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_raw_text</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="relex.utilities.html" class="btn btn-neutral float-left" title="relex.utilities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributions.html" class="btn btn-neutral float-right" title="Contributing to improve code quality" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ali NCIBI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

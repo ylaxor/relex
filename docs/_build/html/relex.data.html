@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>relex.data &mdash; relex 0.1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="relex.models" href="relex.models.html" />
+    <link rel="prev" title="Supported Python versions" href="relex.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> relex
+            <img src="_static/relex.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html">Project context, and motivation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="main_sections.html#package-technical-details">Package technical details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="relex.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relex.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relex.html#installation">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="relex.html#sub-packages">Sub-packages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">relex.data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.models.html">relex.models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.learners.html">relex.learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.predictors.html">relex.predictors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.utilities.html">relex.utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#supported-use-cases">Supported use-cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#how-to-contribute">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#resources">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#credits">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#license">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">relex</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="main_sections.html">Project context, and motivation</a> &raquo;</li>
+          <li><a href="relex.html">Supported Python versions</a> &raquo;</li>
+      <li>relex.data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/relex.data.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-relex.data">
+<span id="relex-data"></span><h1>relex.data<a class="headerlink" href="#module-relex.data" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="relex.data.RelexCorpus">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relex.data.</span></span><span class="sig-name descname"><span class="pre">RelexCorpus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.data.RelexCorpus" title="Permalink to this definition"></a></dt>
+<dd><p>RelexCorpus class to wrap learning pre-annotated sentences with respect to some semantic relations. Used during learning loops of both the relex.models.EntitiesTagger and relex.models.PairClassifier modules whose roles are respectively to tag entities and predict the relation (it’s type and/or direction) between pairs of them. It puts given samples in relex.data.RelexDataset instances that would be loaded during the learning process of the relation classifier (relex.models.PairClassifier) module. For that, it alse computes some useful labelling mappings for present relations types and directions. Additionally, it provides useful methods to generate a tagging flair.data.Corpus object along with useful tags mappings useful for the tagging task ensured by the relex.models.EntitiesTagger module.
+Samples in each param list must be dictionaries with the following items:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘sentence’: a string containing the sentence.</p></li>
+<li><p>‘class’: a string containing the class of the relation.</p></li>
+<li><p>‘direction’: a string containing the direction of the relation.</p></li>
+<li><p>‘head’: a dictionary containing {‘start’: int, ‘end’: int} information of head entity.</p></li>
+<li><p>‘tail’: a dictionary containing {‘start’: int, ‘end’: int} information of tail entity.</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">train (list)</dt>
+<dd class="field-odd"><p>training set of pre-annotated sentences.</p>
+</dd>
+<dt class="field-even">dev (list)</dt>
+<dd class="field-even"><p>validation set of pre-annotated sentences.</p>
+</dd>
+<dt class="field-odd">test (list)</dt>
+<dd class="field-odd"><p>testing set of pre-annotated sentences.</p>
+</dd>
+</dl>
+</dd>
+<dt>Attributes:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">train ()</dt>
+<dd class="field-odd"><dl class="field-list simple">
+<dt class="field-odd">class</dt>
+<dd class="field-odd"><p><cite>relex.data.RelexDataset</cite> training torch-wrapped data set. Used in relation classification task.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">dev (relex.data.RelexDataset)</dt>
+<dd class="field-even"><p>validation torch-wrapped data set. Used in relation classification task.</p>
+</dd>
+<dt class="field-odd">test (relex.data.RelexDataset)</dt>
+<dd class="field-odd"><p>testing torch-wrapped data set. Used in relation classification task.</p>
+</dd>
+<dt class="field-even">class2idx (dict)</dt>
+<dd class="field-even"><p>present relations’ classes to numerical indices mapping, where computation is performed on all train, dev and test samples taken together. Used in relation classification task.</p>
+</dd>
+<dt class="field-odd">direction2idx (dict)</dt>
+<dd class="field-odd"><p>present relations’ directions to numerical indices mapping, where computation is performed on all train, dev and test samples taken together. Used in relation classification task.</p>
+</dd>
+<dt class="field-even">tags_corpus (flair.data.Corpus)</dt>
+<dd class="field-even"><p>flair.data.Corpus object for the tagging task ensured by the relex.models.EntitiesTagger module.</p>
+</dd>
+<dt class="field-odd">tag_type (str)</dt>
+<dd class="field-odd"><p>tag type used by the relex.models.EntitiesTagger module.</p>
+</dd>
+<dt class="field-even">tag_dict (flair.data.LabelDictionary)</dt>
+<dd class="field-even"><p>flair.data.LabelDictionary object for the tagging task ensured by the relex.models.EntitiesTagger module.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="relex.data.RelexDataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relex.data.</span></span><span class="sig-name descname"><span class="pre">RelexDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'learning'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.data.RelexDataset" title="Permalink to this definition"></a></dt>
+<dd><p>RelexDataset class to help validate and wrap the provided list of samples into a torch.utils.data.Dataset object.
+Samples in each param list must be dictionaries with a pre-defined (see mode parameter) subset of the following items:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘sentence’: a string containing the sentence.</p></li>
+<li><p>‘class’: a string containing the class of the relation.</p></li>
+<li><p>‘direction’: a string containing the direction of the relation.</p></li>
+<li><p>‘head’: a dictionary containing {‘start’: int, ‘end’: int} information of head entity.</p></li>
+<li><p>‘tail’: a dictionary containing {‘start’: int, ‘end’: int} information of tail entity.</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">mode (str)</dt>
+<dd class="field-odd"><p>should be either ‘learning’ or ‘prediction’. In ‘prediction’ mode you only provide the ‘sentence’, ‘head’ and ‘tail’ information. In ‘learning’ mode, ‘class’ and ‘direction’ fields are additionally required. Defaults to ‘learning’.</p>
+</dd>
+<dt class="field-even">samples (list)</dt>
+<dd class="field-even"><p>a list of pre-annotated samples to wrap.</p>
+</dd>
+</dl>
+</dd>
+<dt>Attributes:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">samples (list)</dt>
+<dd class="field-odd"><p>a container list of validated pre-annotated samples.</p>
+</dd>
+<dt class="field-even">mode (str)</dt>
+<dd class="field-even"><p>the selected loading mode.</p>
+</dd>
+</dl>
+</dd>
+<dt>Raises:</dt><dd><p>AssertionError: when one of the samples in the list is not a valid sample.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="relex.data.RelexDataset.validate_sample">
+<span class="sig-name descname"><span class="pre">validate_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.data.RelexDataset.validate_sample" title="Permalink to this definition"></a></dt>
+<dd><p>Validates the given sample format and ensures it presents the necessary fields, according to ‘self.mode’ parameter.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">sample (dict)</dt>
+<dd class="field-odd"><p>A single sample dictionary object to validate.</p>
+</dd>
+</dl>
+</dd>
+<dt>Raises:</dt><dd><p>AssertionError: when one or more fields of the given sample are not validated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="relex.html" class="btn btn-neutral float-left" title="Supported Python versions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="relex.models.html" class="btn btn-neutral float-right" title="relex.models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ali NCIBI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

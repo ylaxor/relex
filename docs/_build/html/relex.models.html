@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>relex.models &mdash; relex 0.1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="relex.learners" href="relex.learners.html" />
+    <link rel="prev" title="relex.data" href="relex.data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> relex
+            <img src="_static/relex.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html">Project context, and motivation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="main_sections.html#package-technical-details">Package technical details</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="relex.html">Supported Python versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relex.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relex.html#installation">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="relex.html#sub-packages">Sub-packages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="relex.data.html">relex.data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">relex.models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.learners.html">relex.learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.predictors.html">relex.predictors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relex.utilities.html">relex.utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#supported-use-cases">Supported use-cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#how-to-contribute">How to contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#resources">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#credits">Credits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_sections.html#license">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">relex</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="main_sections.html">Project context, and motivation</a> &raquo;</li>
+          <li><a href="relex.html">Supported Python versions</a> &raquo;</li>
+      <li>relex.models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/relex.models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-relex.models">
+<span id="relex-models"></span><h1>relex.models<a class="headerlink" href="#module-relex.models" title="Permalink to this headline"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="relex.models.EntitiesTagger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relex.models.</span></span><span class="sig-name descname"><span class="pre">EntitiesTagger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">flair.embeddings.token.StackedEmbeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_dictionary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">flair.data.Dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rnn_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'LSTM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rnn_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bidirectional</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_crf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reproject_embeddings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">word_dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locked_dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_unk_predictions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.models.EntitiesTagger" title="Permalink to this definition"></a></dt>
+<dd><p>EntitiesTagger class for predicting B.I.O-tags for single text tokens. Used to identify text entities that would form candidate pairs of potentially semantically related entities. Wraps a flair.models.SequenceTagger model, and can be parameterized by several parameters. Learning of this module can be easily achieved with the help of a relex.learners.EntitiesTaggerLearner instance, which will train, validate and test the entities tagger model weights on the given corpus and output optimal weights of the tagger to a reusable ‘best-model.pt’ checkpoint file. Output file of the learning process is a core flair.models.SequenceTagger checkpoint file.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">embeddings</dt>
+<dd class="field-odd"><p>stack of embedding.s to use during learning and prediction, wrapped inside a flair.data.StackedEmbeddings object.</p>
+</dd>
+<dt class="field-even">tag_dictionary</dt>
+<dd class="field-even"><p>flair.data.Dictionary containing all tags from corpus which can be predicted.</p>
+</dd>
+<dt class="field-odd">tag_type</dt>
+<dd class="field-odd"><p>type of tag which is going to be predicted in case a corpus has multiple annotations.</p>
+</dd>
+<dt class="field-even">rnn_type</dt>
+<dd class="field-even"><p>specifies the RNN type to use, default is ‘LSTM’, can choose between ‘GRU’ and ‘RNN’ as well.</p>
+</dd>
+<dt class="field-odd">hidden_size</dt>
+<dd class="field-odd"><p>hidden size of RNN layer.</p>
+</dd>
+<dt class="field-even">rnn_layers</dt>
+<dd class="field-even"><p>number of RNN layers.</p>
+</dd>
+<dt class="field-odd">bidirectional</dt>
+<dd class="field-odd"><p>if True, RNN becomes bidirectional.</p>
+</dd>
+<dt class="field-even">use_crf</dt>
+<dd class="field-even"><p>if True, use a Conditional Random Field for prediction, else linear map to tag space.</p>
+</dd>
+<dt class="field-odd">reproject_embeddings</dt>
+<dd class="field-odd"><p>if True, add a linear layer on top of embeddings, if you want to imitate
+fine tune non-trainable embeddings.</p>
+</dd>
+<dt class="field-even">dropout</dt>
+<dd class="field-even"><p>if &gt; 0, then use dropout.</p>
+</dd>
+<dt class="field-odd">word_dropout</dt>
+<dd class="field-odd"><p>if &gt; 0, then use word dropout.</p>
+</dd>
+<dt class="field-even">locked_dropout</dt>
+<dd class="field-even"><p>if &gt; 0, then use locked dropout.</p>
+</dd>
+<dt class="field-odd">loss_weights</dt>
+<dd class="field-odd"><p>flair.data.Dictionary of weights for labels for the loss function
+(if any label’s weight is unspecified it will default to 1.0).</p>
+</dd>
+<dt class="field-even">allow_unk_predictions</dt>
+<dd class="field-even"><p>if True, allow predictions for unknown words.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="relex.models.EntitiesTagger.infer">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">infer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tagger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">flair.models.sequence_tagger_model.SequenceTagger</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sentence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.models.EntitiesTagger.infer" title="Permalink to this definition"></a></dt>
+<dd><p>Uses the given tagging model instance to infer tags for the given sentence.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">tagger</dt>
+<dd class="field-odd"><p>some learned flair.models.SequenceTagger model instance, e.g. reloaded after having trained, validated, tested and saved a relex.models.EntitiesTagger module using the relex.learners.EntitiesTaggerLearner module.</p>
+</dd>
+<dt class="field-even">sentence</dt>
+<dd class="field-even"><p>sentence to predict tags for.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">tokens</dt>
+<dd class="field-odd"><p>list of tokens in the sentence, obtained by straightforward splitting the sentence on whitespace.</p>
+</dd>
+<dt class="field-even">tags</dt>
+<dd class="field-even"><p>list of tags for the given sentence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relex.models.EntitiesTagger.reload">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.models.EntitiesTagger.reload" title="Permalink to this definition"></a></dt>
+<dd><p>Reloads a pre-saved entities tagger model from the given folder, e.g after having preivously trained, validated, tested and saved a relex.models.EntitiesTagger model using the relex.learners.EntitiesTaggerLearner module.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">base_path</dt>
+<dd class="field-odd"><p>path to the folder containing the checkpoint file to use.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">reloaded_model</dt>
+<dd class="field-odd"><p>A flair.models.SequenceTagger object containing the pre-saved tagger.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="relex.models.PairClassifier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">relex.models.</span></span><span class="sig-name descname"><span class="pre">PairClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embeddings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reproject_embeddings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">projection_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nb_directions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_specific_embeddings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pair_pooling_operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stack'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_class_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_direction_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.models.PairClassifier" title="Permalink to this definition"></a></dt>
+<dd><p>PairClassifier class for classifying relation type and/or direction for a given candidate pair of text entities. Used to predict relation nature (type, direction, or jointly both) between candidate pairs, e.g those that would be formed thanks to the entities tags inferred by a pre-trained relex.models.EntitiesTagger module. Can be parameterized by several parameters.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">embeddings</dt>
+<dd class="field-odd"><p>stack of embedding.s to use during learning and prediction, wrapped inside a flair.data.StackedEmbeddings object.</p>
+</dd>
+<dt class="field-even">use_specific_embeddings</dt>
+<dd class="field-even"><p>if True, a specific (task-trainable) char-level-based word embeddings layer is added to the stack of external embeddings. Its role is to help consolidate (since trainable) the classifier’s knowledge about relations types and/or directions.</p>
+</dd>
+<dt class="field-odd">pair_pooling_operation</dt>
+<dd class="field-odd"><p>“average” or “stack” to use for pooling the features of the two entities of a pair.</p>
+</dd>
+<dt class="field-even">reproject_embeddings</dt>
+<dd class="field-even"><p>if True, the obtained pair representation is projected on one extra hidden layer before being fed to the main hidden layer.</p>
+</dd>
+<dt class="field-odd">projection_size</dt>
+<dd class="field-odd"><p>the size of the extra pair-projection layer. Used when reproject_embeddings is True.</p>
+</dd>
+<dt class="field-even">hidden_size</dt>
+<dd class="field-even"><p>hidden size of main linear layer used to classify pairs’ representations (or projected version of them if reproject_embeddings is True).</p>
+</dd>
+<dt class="field-odd">nb_classes</dt>
+<dd class="field-odd"><p>number of relation types to predict. E.g 3 for “Has nationality”, “Located in”, and “Plays”.</p>
+</dd>
+<dt class="field-even">nb_directions</dt>
+<dd class="field-even"><p>number of relation directions to predict. E.g 2 for “left-to-right” and “right-to-left”.</p>
+</dd>
+<dt class="field-odd">init_class_alpha</dt>
+<dd class="field-odd"><p>(Optional) initial value of some coefficient to multiply with the relation type’s loss during learning of the model, and when combined loss aggregation mode is active.</p>
+</dd>
+<dt class="field-even">init_direction_alpha</dt>
+<dd class="field-even"><p>(Optional) initial value of some coefficient to multiply with the relation direction’s loss during learning of the model, and when combined loss aggregation mode is active.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="relex.models.PairClassifier.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch_samples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.models.PairClassifier.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Performs forward pass - for both relation type and direction - on the N samples in the given batch. In the relex.learners.PairClassifierLearner module, you can select which of relation’s (type, direction) to train for, and only the targeted logits (relation type, direction, or jointly both) are used to compute the loss.es and update only the branch of network weights being invoked accordingly.
+Samples in the batch must be dictionaries with the following items:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘sentence’: a string containing the sentence.</p></li>
+<li><p>‘head’: a dictionary containing {‘start’: int, ‘end’: int} information of head entity.</p></li>
+<li><p>‘tail’: a dictionary containing {‘start’: int, ‘end’: int} information of tail entity.</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">batch_samples</dt>
+<dd class="field-odd"><p>A torch-based batch object of size N samples, e.g through next(iter(torch.utils.data.DataLoader(RelexDataset, batch_size=N, shuffle=True))</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">batch_logits_relation_type</dt>
+<dd class="field-odd"><p>(N, number of relation types) e.g (N, 2) for two relation types, where N is the number of samples in the batch.</p>
+</dd>
+<dt class="field-even">batch_logits_relation_direction</dt>
+<dd class="field-even"><p>(N, number of relation directions) e.g (N, 2) for two relation directions, where N is the number of samples in the batch.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relex.models.PairClassifier.infer">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">infer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pair_classifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_samples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.models.PairClassifier.infer" title="Permalink to this definition"></a></dt>
+<dd><p>Uses the given pair classifier instance to perform forward pass on the given batch of samples and returns the predicted relation type and direction for each.
+Samples in the batch must be dictionaries with the following items:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘sentence’: a string containing the sentence.</p></li>
+<li><p>‘head’: a dictionary containing {‘start’: int, ‘end’: int} information of head entity. The ‘start’ and ‘end’ are indices of the first and last token of the head (left) entity within the ordered list of tokens in the sentence.</p></li>
+<li><p>‘tail’: a dictionary containing {‘start’: int, ‘end’: int} information of tail entity. The ‘start’ and ‘end’ are indices of the first and last token of the tail (right) entity within the ordered list of tokens in the sentence.</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">pair_classifier</dt>
+<dd class="field-odd"><p>some learned relex.models.PairClassifier model instance, eg. reloaded after having trained, validated, tested and saved a relex.models.PairClassifier module using the relex.learners.PairClassifierLearner module.</p>
+</dd>
+<dt class="field-even">batch_samples</dt>
+<dd class="field-even"><p>A torch-based batch object of size N samples, e.g through next(iter(torch.utils.data.DataLoader(RelexDataset, batch_size=N, shuffle=True))</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">predicted_relation_type</dt>
+<dd class="field-odd"><p>A list of predicted relation types for the given samples.</p>
+</dd>
+<dt class="field-even">predicted_relation_direction</dt>
+<dd class="field-even"><p>A list of predicted relation directions for the given samples.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="relex.models.PairClassifier.reload">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#relex.models.PairClassifier.reload" title="Permalink to this definition"></a></dt>
+<dd><p>Reloads a pre-saved relex.models.PairClassifier model from the given folder, e.g after having preivously learned, tested and saved such a model using the relex.learners.PairClassifierLearner module.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">base_path</dt>
+<dd class="field-odd"><p>path to the folder containing the ‘best-model.pt’ checkpoint file to use.</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="field-list simple">
+<dt class="field-odd">reloaded_model</dt>
+<dd class="field-odd"><p>A relex.models.PairClassifier instance reloaded from the given file.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="relex.data.html" class="btn btn-neutral float-left" title="relex.data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="relex.learners.html" class="btn btn-neutral float-right" title="relex.learners" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ali NCIBI.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
