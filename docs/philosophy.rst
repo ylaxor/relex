@@ -100,7 +100,7 @@ Alternatively, one can use a data-driven heuristic, i.e based on learning from d
 Mainspring of the project
 ============================================
 
-The branch of research world world that is interested in deep'**' semantic relations extraction, just like any other research field in (AI) and ((NLP)), is constantly evolving:
+The branch of research world world that is interested in deep'**' semantic relations extraction, just like any other research field in (AI) and (NLP), is constantly evolving:
 there would be always a new best architecture for that specific sub-task, or a new best learning scheme for the other sub-task, etc. But the global solving framework, i.e the three-stages modular program presented above, remains globally unchanged. 
 The objective behind these continuous updates people who are interested in relation extraction should want to keep receiving from the R&D world is obviously to improve the efficiency of the final system in solving the task. 
 But those are not necessarily easy to access and/or integrate by large public for various reasons. 
