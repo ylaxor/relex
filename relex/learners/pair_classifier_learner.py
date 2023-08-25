@@ -426,9 +426,9 @@ class PairClassifierLearner:
         optimizer = optim.SGD(trainable_parameters, lr=self.initial_learning_rate, momentum=0.9)
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer=optimizer, mode="max", factor=self.decay_factor, patience=self.decay_patience, verbose=False)
         
-        eval_metric_class = F1Score(num_classes=len(self.corpus.class2idx), average=self.eval_metric_type)
+        eval_metric_class = F1Score(task="multiclass", num_classes=len(self.corpus.class2idx), average=self.eval_metric_type)
         eval_metric_class = eval_metric_class.to(self.available_device)
-        eval_metric_direction = F1Score(num_classes=len(self.corpus.direction2idx), average=self.eval_metric_type)
+        eval_metric_direction = F1Score(task="binary", num_classes=len(self.corpus.direction2idx), average=self.eval_metric_type)
         eval_metric_direction = eval_metric_direction.to(self.available_device)
         eval_metrics = {"class": eval_metric_class, "direction": eval_metric_direction}
         train_loader, dev_loader, test_loader = self.get_data_loaders()
