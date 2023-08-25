@@ -29,9 +29,9 @@ In this approach:
     # Import the FewRel dataset as example.
     data = LoadFewRelData(usage="demo-with-three-relations")
     # Or load your custom pre-annotated data samples.
-    custom_train_data = LoadCustomCorpus(jsonl_file_path="./demo-custom-corpus.jsonl")
-    custom_dev_data = LoadCustomCorpus(jsonl_file_path="./demo-custom-corpus.jsonl")
-    custom_test_data = LoadCustomCorpus(jsonl_file_path="./demo-custom-corpus.jsonl")
+    custom_train_data = LoadCustomCorpus(file_path="./demo-custom-corpus.jsonl")
+    custom_dev_data = LoadCustomCorpus(file_path="./demo-custom-corpus.jsonl")
+    custom_test_data = LoadCustomCorpus(file_path="./demo-custom-corpus.jsonl")
     
 An example of valid custom corpus file can be found in the `following link <https://github.com/ylaxor/relex/blob/main/demo-custom-corpus.jsonl>`_.
 Such files can be created using awesome GUI annotation tools like: `doccano <https://github.com/doccano/doccano>`_.
